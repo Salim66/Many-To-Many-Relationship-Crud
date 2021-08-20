@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+
+    // mass assignment
+    protected $guarded = [];
+
+    public function users(){
+        return $this->belongsToMany('App\Models\User');
+    }
+
 }
