@@ -73,3 +73,30 @@ Route::get('/delete', function(){
     }
 
 });
+
+
+Route::get('/attach', function(){
+
+    $user = User::findOrFail(1);
+
+    $user->roles()->attach(4);
+
+});
+
+
+Route::get('/detach', function(){
+
+    $user = User::findOrFail(1);
+    $user->roles()->detach(3);
+
+});
+
+
+// duplicate data not create and duplicate data automatically detach
+Route::get('/sync', function(){
+
+    // $user = User::findOrFail(2);
+    $user = User::findOrFail(1);
+    $user->roles()->sync([4,5]);
+
+});
